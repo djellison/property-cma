@@ -33,8 +33,7 @@ CORS is locked to `https://davidjellisonrealtor.homes`.
 ## Deploy
 
 1. Cloudflare dashboard → Workers & Pages → Create → Create Worker.
-2. Paste in `whv-avm-proxy.js`, Save and Deploy. Name the Worker `whv-avm-proxy`
-   so its URL matches the landing page (`https://whv-avm-proxy.<subdomain>.workers.dev`).
+2. Paste in `whv-avm-proxy-worker.js`, Save and Deploy.
 3. Worker → Settings → Variables and Secrets → add `RENTCAST_API_KEY`
    (type: Secret) with the RentCast API key. Never hardcode it in this file.
 4. Note the Worker's URL and set it as `WORKER_BASE` in the landing page's
