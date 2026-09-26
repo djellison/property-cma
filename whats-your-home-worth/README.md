@@ -14,8 +14,13 @@ and the page calls the Worker instead.
 
 ## Routes
 
-- `GET /value?address=...` → proxies RentCast's `/v1/avm/value` (AVM).
-  Returns `{ price, priceRangeLow, priceRangeHigh }`. Cached 6 hours per address.
+- `GET /` → short HTML info page (so the bare Worker URL doesn't 404).
+- `GET /value?address=...` → proxies RentCast's `/v1/avm/value` (AVM) using
+  20 comps. Optional `bedrooms`, `bathrooms`, `squareFootage` and
+  `propertyType` params are passed through to RentCast. Returns
+  `{ price, priceRangeLow, priceRangeHigh }`, with RentCast's range narrowed
+  to halfway between the estimate and each bound. Cached 6 hours per
+  address + spec combination.
 - `GET /stats?zipCode=...` → proxies RentCast's `/v1/markets` (sold-price
   stats) plus `/v1/listings/sale` (active listings, averaged in-Worker for a
   true current list-price figure, since RentCast's Markets endpoint only
